@@ -27,8 +27,9 @@ class WebActivity : AppCompatActivity() {
         }
 
         bt_close.setOnClickListener {
+            scrollview.scrollTo(0, 0)
             val param = web.layoutParams
-            param.height = fl_root.height
+            param.height = height
             web.layoutParams = param
             scrollview.isNotIntercept = true
         }
