@@ -26,6 +26,7 @@ class WebActivity : AppCompatActivity() {
                 val param = web.layoutParams
                 param.height = fl_root.height
                 web.layoutParams = param
+                scrollview.isNotIntercept = true
             }
         })
 
@@ -51,6 +52,7 @@ class WebActivity : AppCompatActivity() {
                 val param = web.layoutParams
                 param.height = ViewGroup.LayoutParams.MATCH_PARENT
                 web.layoutParams = param
+                scrollview.isNotIntercept = false
             }
         }
 

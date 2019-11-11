@@ -13,7 +13,8 @@
         android:id="@+id/fl_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ScrollView
+        <com.duyi.webviewdemo.MyScrollView
+            android:id="@+id/scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
@@ -30,7 +31,7 @@
                     android:background="#00ff00"/>
             </LinearLayout>
 
-        </ScrollView>
+        </com.duyi.webviewdemo.MyScrollView>
     </FrameLayout>
 
 
