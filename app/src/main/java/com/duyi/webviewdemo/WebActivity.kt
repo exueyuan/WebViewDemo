@@ -12,17 +12,33 @@ import kotlinx.android.synthetic.main.activity_web.*
 
 
 class WebActivity : AppCompatActivity() {
+    var height = 0
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web)
 
+        bt_open.setOnClickListener {
+            val param = web.layoutParams
+            param.height = ViewGroup.LayoutParams.MATCH_PARENT
+            web.layoutParams = param
+            scrollview.isNotIntercept = false
+        }
+
+        bt_close.setOnClickListener {
+            val param = web.layoutParams
+            param.height = fl_root.height
+            web.layoutParams = param
+            scrollview.isNotIntercept = true
+        }
+
         fl_root.viewTreeObserver.addOnGlobalLayoutListener(object :ViewTreeObserver.OnGlobalLayoutListener{
             override fun onGlobalLayout() {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     fl_root.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 }
+                this@WebActivity.height = fl_root.height
                 val param = web.layoutParams
                 param.height = fl_root.height
                 web.layoutParams = param
