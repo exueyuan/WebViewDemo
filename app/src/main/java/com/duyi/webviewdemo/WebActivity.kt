@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
@@ -52,7 +53,12 @@ class WebActivity : AppCompatActivity() {
         val webSettings = web.getSettings()
         webSettings.javaScriptEnabled = true
 
-        web.loadUrl("https://www.baidu.com/")
+        var url:String = et_edit.text.toString()
+        if (TextUtils.isEmpty(url)) {
+            url = "https://www.baidu.com/"
+        }
+
+        web.loadUrl(url)
 //        web.loadUrl("https://www.independent.co.uk/news/world/europe/glacier-funeral-switzerland-pivol-climate-change-global-warming-a9116046.html")
 //        web.loadUrl("https://heycar.m.autohome.com.cn/Flipboard/m/74976943-1.html")
 
