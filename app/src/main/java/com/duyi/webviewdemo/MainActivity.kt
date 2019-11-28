@@ -12,8 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         bt_web.setOnClickListener {
-            val intent = Intent(this, WebActivity::class.java)
-            startActivity(intent)
+            startWebActivity(this, "https://www.baidu.com/")
         }
     }
 }

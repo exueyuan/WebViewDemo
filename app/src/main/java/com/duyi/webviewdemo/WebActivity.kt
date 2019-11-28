@@ -1,6 +1,7 @@
 package com.duyi.webviewdemo
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,12 +14,17 @@ import kotlinx.android.synthetic.main.activity_web.*
 
 
 class WebActivity : AppCompatActivity() {
+    companion object {
+        val INTENT_URL = "intent_url"
+    }
     var height = 0
+    lateinit var url:String
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web)
+        url = intent.getStringExtra(INTENT_URL)
 
         bt_open.setOnClickListener {
             val param = web.layoutParams
@@ -53,10 +59,10 @@ class WebActivity : AppCompatActivity() {
         val webSettings = web.getSettings()
         webSettings.javaScriptEnabled = true
 
-        var url:String = et_edit.text.toString()
+/*        var url:String = et_edit.text.toString()
         if (TextUtils.isEmpty(url)) {
             url = "https://www.baidu.com/"
-        }
+        }*/
 
         web.loadUrl(url)
 //        web.loadUrl("https://www.independent.co.uk/news/world/europe/glacier-funeral-switzerland-pivol-climate-change-global-warming-a9116046.html")
@@ -66,7 +72,7 @@ class WebActivity : AppCompatActivity() {
         //系统默认会通过手机浏览器打开网页，为了能够直接通过WebView显示网页，则必须设置
         web.webViewClient = object:WebViewClient(){
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                view?.loadUrl(url)
+                startWebActivity(this@WebActivity, url)
                 return true
             }
 
