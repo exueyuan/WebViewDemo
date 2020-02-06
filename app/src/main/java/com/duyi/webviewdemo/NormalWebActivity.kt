@@ -1,6 +1,7 @@
 package com.duyi.webviewdemo
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,11 +27,11 @@ class NormalWebActivity : AppCompatActivity() {
         webSettings.javaScriptEnabled = true
 
         bt_dark.setOnClickListener {
-            WebViewInjectJs.injectJs(web, false)
+            WebViewInjectJs.changeWebViewMode(this, web, false)
         }
 
         bt_day.setOnClickListener {
-            WebViewInjectJs.injectJs(web, true)
+            WebViewInjectJs.changeWebViewMode(this, web, true)
         }
 
 
@@ -45,6 +46,10 @@ class NormalWebActivity : AppCompatActivity() {
 //        web.loadUrl("https://www.flipboard.cn/hybrid/articles/http%3A%2F%2Fm.happyjuzi.com%2Farticle%2F193166.html%3Fd_source%3Dflipboard%26pf%3Dandroid%26view%3D32?section_id=flipboard%2Fcurator%252Fmagazine%252FU6z-oRJ_QYSqF_vtoEstrw%253Am%253A995395684&section_subscribed=false")
         //系统默认会通过手机浏览器打开网页，为了能够直接通过WebView显示网页，则必须设置
         web.webViewClient = object:WebViewClient(){
+            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                super.onPageStarted(view, url, favicon)
+
+            }
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                 view?.loadUrl(url)
                 return true

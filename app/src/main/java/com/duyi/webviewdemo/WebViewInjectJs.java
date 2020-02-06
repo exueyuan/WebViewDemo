@@ -1,28 +1,38 @@
 package com.duyi.webviewdemo;
 
+import android.content.Context;
+import android.util.Base64;
 import android.webkit.WebView;
 
-public class WebViewInjectJs {
-    /**
-     * 通过WebView向H5注入js代码
-     *
-     * @param webView
-     */
-    public static void injectJs(WebView webView, boolean isDayTheme) {
+import java.io.InputStream;
 
-        // && isOnPageFinished
+public class WebViewInjectJs {
+
+    public static void changeWebViewMode(Context context, WebView webView, boolean isDayTheme) {
         if (isDayTheme) {
-            //API19，android4.4及以下无法分开处理
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-                webView.evaluateJavascript("document.body.style.backgroundColor=\"white\";document.body.style.color=\"black\";", null);
-            } else {
-                webView.loadUrl("javascript:document.body.style.backgroundColor=\"#white\";document.body.style.color=\"black\";");
+//            webView.reload();
+            try {
+                InputStream is = context.getResources().openRawResource(R.raw.day);
+                byte[] buffer = new byte[is.available()];
+                is.read(buffer);
+                is.close();
+                String dayCode = Base64.encodeToString(buffer, Base64.NO_WRAP);
+                webView.loadUrl(
+                        "javascript:(function() {" + "var parent = document.getElementsByTagName('head').item(0);" + "var style = document.createElement('style');" + "style.type = 'text/css';" + "style.innerHTML = window.atob('" + dayCode + "');" + "parent.appendChild(style)" + "})();");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } else if (!isDayTheme) {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-                webView.evaluateJavascript("document.body.style.backgroundColor=\"black\";document.body.style.color=\"white\";", null);
-            } else {
-                webView.loadUrl("javascript:document.body.style.backgroundColor=\"#black\";document.body.style.color=\"white\";");
+        } else {
+            try {
+                InputStream is = context.getResources().openRawResource(R.raw.night);
+                byte[] buffer = new byte[is.available()];
+                is.read(buffer);
+                is.close();
+                String nightCode = Base64.encodeToString(buffer, Base64.NO_WRAP);
+                webView.loadUrl(
+                        "javascript:(function() {" + "var parent = document.getElementsByTagName('head').item(0);" + "var style = document.createElement('style');" + "style.type = 'text/css';" + "style.innerHTML = window.atob('" + nightCode + "');" + "parent.appendChild(style)" + "})();");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
