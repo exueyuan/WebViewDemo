@@ -1,15 +1,15 @@
-package com.duyi.webviewdemo
+package com.duyi.webviewdemo.scrollwebview
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.webkit.*
+import com.duyi.webviewdemo.R
+import com.duyi.webviewdemo.startWebActivity
 import kotlinx.android.synthetic.main.activity_web.*
 
 

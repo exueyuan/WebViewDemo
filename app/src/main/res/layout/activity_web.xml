@@ -32,7 +32,7 @@
         android:id="@+id/fl_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.duyi.webviewdemo.MyScrollView
+        <com.duyi.webviewdemo.scrollwebview.MyScrollView
             android:id="@+id/scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <com.duyi.webviewdemo.FLWebView
+                <com.duyi.webviewdemo.scrollwebview.FLWebView
                     android:id="@+id/web"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
@@ -50,7 +50,7 @@
                     android:background="#00ff00"/>
             </LinearLayout>
 
-        </com.duyi.webviewdemo.MyScrollView>
+        </com.duyi.webviewdemo.scrollwebview.MyScrollView>
     </FrameLayout>
 
 

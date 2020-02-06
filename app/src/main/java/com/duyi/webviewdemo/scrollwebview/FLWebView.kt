@@ -1,4 +1,4 @@
-package com.duyi.webviewdemo
+package com.duyi.webviewdemo.scrollwebview
 
 import android.content.Context
 import android.util.AttributeSet
