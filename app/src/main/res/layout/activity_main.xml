@@ -28,4 +28,10 @@
         android:layout_height="wrap_content"
         android:text="普通webview打开" />
 
+    <Button
+        android:id="@+id/bt_video_web"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开视频webview"/>
+
 </LinearLayout>

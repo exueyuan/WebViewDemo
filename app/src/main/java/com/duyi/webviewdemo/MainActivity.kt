@@ -19,5 +19,8 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, NormalWebActivity::class.java)
             startActivity(intent)
         }
+        bt_video_web.setOnClickListener {
+            startVideoWebActivity(this)
+        }
     }
 }

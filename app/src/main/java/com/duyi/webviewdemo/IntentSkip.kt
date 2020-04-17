@@ -10,3 +10,9 @@ fun startWebActivity(context: Context, url:String?) {
     intent.putExtra(WebActivity.INTENT_URL, url)
     context.startActivity(intent)
 }
+
+fun startVideoWebActivity(context: Context) {
+    val intent = Intent(context, VideoWebActivity::class.java)
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    context.startActivity(intent)
+}
