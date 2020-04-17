@@ -1,6 +1,8 @@
 package com.duyi.webviewdemo
 
 import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.webkit.WebChromeClient
@@ -49,6 +51,18 @@ class VideoWebActivity : AppCompatActivity() {
 
             }
 
+        }
+
+        bt_all_screen.setOnClickListener {
+            if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            }
+        }
+
+        bt_all_cancel_screen.setOnClickListener {
+            if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            }
         }
 
     }

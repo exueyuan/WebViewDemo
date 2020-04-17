@@ -25,7 +25,7 @@
         <activity android:name=".NormalWebActivity" />
         <activity android:name=".VideoWebActivity"
             android:hardwareAccelerated="true"
-            android:configChanges="orientation|screenSize|keyboardHidden" />
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
     </application>
 
 </manifest>
