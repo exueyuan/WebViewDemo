@@ -23,7 +23,9 @@
 
         <activity android:name=".scrollwebview.WebActivity" />
         <activity android:name=".NormalWebActivity" />
-        <activity android:name=".VideoWebActivity" />
+        <activity android:name=".VideoWebActivity"
+            android:hardwareAccelerated="true"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
     </application>
 
 </manifest>
