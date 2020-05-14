@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         bt_web.setOnClickListener {
             startWebActivity(this, "https://www.baidu.com/")
         }
